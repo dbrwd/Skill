@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a1c2c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Skills">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Mis skills</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#94b0c2;--card:#f4f4f4;--ink:#1a1c2c;--bd:#1a1c2c;--mute:#333c57;--track:#c4d2de;--warn:#b13e53;--good:#257179;--btn:#ffcd75;--acc:#3b5dc9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1c2c;--card:#29366f;--ink:#f4f4f4;--bd:#94b0c2;--mute:#a8b5d8;--track:#1a1c2c;--warn:#ef7d57;--good:#a7f070;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1c2c;--card:#29366f;--ink:#f4f4f4;--bd:#94b0c2;--mute:#a8b5d8;--track:#1a1c2c;--warn:#ef7d57;--good:#a7f070;color-scheme:dark}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:11px/1.7 "Press Start 2P",ui-monospace,Menlo,Consolas,monospace;image-rendering:pixelated;
+background-image:linear-gradient(45deg,rgba(0,0,0,.07) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.07) 75%),linear-gradient(45deg,rgba(0,0,0,.07) 25%,transparent 25%,transparent 75%,rgba(0,0,0,.07) 75%);background-size:16px 16px;background-position:0 0,8px 8px}
+main{max-width:520px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:20px;line-height:1.3;margin:8px 0 6px}
+.sub{color:var(--mute);margin:0 0 20px}
+.px{background:var(--card);margin:4px;box-shadow:0 -4px 0 0 var(--bd),0 4px 0 0 var(--bd),-4px 0 0 0 var(--bd),4px 0 0 0 var(--bd),inset -4px -4px 0 0 rgba(0,0,0,.22)}
+form{display:flex;flex-wrap:wrap;gap:14px 10px;margin-bottom:22px}
+input,select,button{font:inherit;color:inherit;border:0;border-radius:0}
+input,select{background:var(--card);color:var(--ink);padding:12px 10px;min-width:0;margin:4px;box-shadow:0 -4px 0 0 var(--bd),0 4px 0 0 var(--bd),-4px 0 0 0 var(--bd),4px 0 0 0 var(--bd)}
+#e{width:60px;text-align:center}#n{flex:1 1 150px}#g{flex:1 1 100%}
+button{cursor:pointer;color:var(--ink)}
+button:active{transform:translateY(4px)}
+.add{flex:1 1 100%;background:var(--acc);color:#f4f4f4;padding:14px;margin:4px;box-shadow:0 -4px 0 0 #1a1c2c,0 4px 0 0 #1a1c2c,-4px 0 0 0 #1a1c2c,4px 0 0 0 #1a1c2c,inset -4px -4px 0 0 rgba(0,0,0,.3),inset 4px 4px 0 0 rgba(255,255,255,.25)}
+#banner{display:none;padding:12px;margin:4px 4px 22px;background:var(--card);box-shadow:0 -4px 0 0 var(--bd),0 4px 0 0 var(--bd),-4px 0 0 0 var(--bd),4px 0 0 0 var(--bd)}
+#banner:before{content:">";margin-right:8px;animation:blink 1s steps(2) infinite}
+#banner.warn{display:block;color:var(--warn)}
+#banner.good{display:block;color:var(--good)}
+@keyframes blink{50%{opacity:0}}
+.card{padding:14px;margin-bottom:26px;display:grid;grid-template-columns:80px 1fr;gap:10px 14px}
+.lv{text-align:center;align-self:start;padding:12px 0 10px;background:var(--track);box-shadow:inset 0 0 0 4px var(--bd);font-size:12px;line-height:1}
+.lv small{display:block;font-size:7px;color:var(--mute);margin-top:8px}
+.gem{display:block;width:44px;height:44px;margin:0 auto 10px;animation:bob 1.6s steps(2) infinite}
+.gem.rust{filter:grayscale(.85) brightness(.75);animation:none}
+.gem.pop{animation:pop .6s steps(6)}
+@keyframes bob{50%{transform:translateY(-3px)}}
+@keyframes pop{0%{transform:scale(1)}30%{transform:scale(1.5) rotate(-8deg)}60%{transform:scale(.9)}100%{transform:scale(1)}}
+.flash{animation:flash .35s steps(3)}
+@keyframes flash{0%{filter:brightness(1.9)}100%{filter:brightness(1)}}
+.pt{position:fixed;width:6px;height:6px;pointer-events:none;z-index:20;animation:fly .65s steps(7) forwards}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy));opacity:0}}
+.name{font-size:12px;line-height:1.5;word-break:break-word;margin-bottom:8px}
+.bar{position:relative;height:18px;background:var(--track);box-shadow:inset 0 0 0 4px var(--bd);margin-bottom:6px}
+.bar i{position:absolute;left:4px;top:4px;bottom:4px;transition:width .5s steps(8)}
+.bar:after{content:"";position:absolute;inset:4px;background:repeating-linear-gradient(90deg,transparent 0 6px,rgba(0,0,0,.35) 6px 8px);pointer-events:none}
+.bar.s{height:12px;margin:8px 0 4px}.bar.s i{top:3px;bottom:3px;left:3px}.bar.s:after{inset:3px}
+.bar.s{box-shadow:inset 0 0 0 3px var(--bd)}
+.meta{font-size:9px;color:var(--mute)}
+.st{font-size:9px;margin-top:4px;line-height:1.6}
+.st.warn{color:var(--warn)}.st.good{color:var(--good)}
+.acts{grid-column:1/-1;display:flex;gap:10px;margin-top:8px}
+.acts button{flex:1;background:var(--btn);color:#1a1c2c;padding:12px 0;font-size:9px;margin:4px;box-shadow:0 -4px 0 0 #1a1c2c,0 4px 0 0 #1a1c2c,-4px 0 0 0 #1a1c2c,4px 0 0 0 #1a1c2c,inset -4px -4px 0 0 rgba(0,0,0,.25),inset 4px 4px 0 0 rgba(255,255,255,.4)}
+.acts button.x{flex:0 0 auto;padding:12px;background:var(--card);color:var(--ink);box-shadow:0 -4px 0 0 var(--bd),0 4px 0 0 var(--bd),-4px 0 0 0 var(--bd),4px 0 0 0 var(--bd)}
+.empty{text-align:center;padding:28px 8px;color:var(--mute);line-height:2}
+[hidden]{display:none!important}
+.chips button.go{padding:12px 14px;font-size:9px}
+.dj{padding:18px 12px;margin-bottom:22px;text-align:center}
+.dj .gem{margin-bottom:12px}
+.dj .bar{margin:10px 0}
+.dj .chips{justify-content:center;margin-bottom:4px}
+.ring{position:relative;width:252px;max-width:100%;margin:10px auto 14px}
+.ring svg{display:block;width:100%;height:auto}
+.ring .clk{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;margin:0;font-size:28px;line-height:1}
+.tabs{display:flex;gap:14px;margin:4px 4px 26px}
+.tabs button,.chips button{background:var(--card);padding:12px 0;font-size:10px;box-shadow:0 -4px 0 0 var(--bd),0 4px 0 0 var(--bd),-4px 0 0 0 var(--bd),4px 0 0 0 var(--bd)}
+.tabs button{flex:1}
+.tabs button.on,.chips button.on,.chips button.go{background:var(--btn);color:#1a1c2c;box-shadow:0 -4px 0 0 #1a1c2c,0 4px 0 0 #1a1c2c,-4px 0 0 0 #1a1c2c,4px 0 0 0 #1a1c2c,inset -4px -4px 0 0 rgba(0,0,0,.25)}
+.chips{display:flex;flex-wrap:wrap;gap:14px 12px;margin:4px 4px 22px}
+.chips button{padding:9px 10px;font-size:8px}
+.chips button.off{opacity:.4}
+.sw{display:inline-block;width:8px;height:8px;margin-right:6px}
+.chart{padding:12px 8px;margin-bottom:22px}
+.chart svg{display:block;width:100%;height:auto}
+.chart text{font:7px "Press Start 2P",ui-monospace,monospace;fill:var(--mute)}
+.note{color:var(--mute);font-size:9px;line-height:1.8;margin:4px 4px 16px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:12px;margin-bottom:18px;font-size:9px}
+.row .good{color:var(--good)}.row .warn{color:var(--warn)}.row .mu{color:var(--mute)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:4px dashed var(--warn);outline-offset:6px}
+@media (prefers-reduced-motion:reduce){#banner:before,.gem,.flash{animation:none!important}.bar i{transition:none}.pt{display:none}}
+</style></head><body><main>
+<h1>Mis skills</h1>
+<p class="sub">Gana XP completando sesiones en el dojo (1 min = 1 XP, máximo 3 h al día por skill). Si la dejas, se oxida.</p>
+<div class="tabs"><button id="t1" class="on" onclick="show('skills')">Skills</button><button id="t3" onclick="show('dojo')">Dojo</button><button id="t2" onclick="show('chart')">Progreso</button></div>
+<div id="v-skills">
+<form onsubmit="add();return false">
+<input id="e" placeholder="🎨" maxlength="4" aria-label="Emoji">
+<input id="n" placeholder="Ej: Dibujo" maxlength="40" aria-label="Nombre de la skill">
+<select id="g" aria-label="Días de gracia">
+<option value="2">Gracia: 2 días</option><option value="3" selected>Gracia: 3 días</option><option value="5">Gracia: 5 días</option><option value="7">Gracia: 7 días</option>
+</select>
+<button class="add" type="submit">Añadir skill</button>
+</form>
+<div id="banner" role="status"></div>
+<div id="list"></div>
+</div>
+<div id="v-dojo" hidden></div>
+<div id="v-chart" hidden></div>
+</main>
+<script>
+const K='skilltree.v1',$=id=>document.getElementById(id);
+let S=[],pend=null,view='skills',rng=30,off={};
+const day=()=>{const d=new Date();return Math.floor((d.getTime()-d.getTimezoneOffset()*6e4)/864e5)};
+const CAP=180,need=L=>L<2?0:Math.round(148*Math.pow(L-1,2.6)),lvl=x=>{let L=Math.floor(Math.pow(Math.max(x,0)/148,1/2.6))+1;while(need(L+1)<=x)L++;while(L>1&&need(L)>x)L--;return L};
+const fmt=m=>{m=Math.round(m);return m<60?m+' min':(m/60).toFixed(m<6000?1:0)+' h'};
+const lab=v=>v>=120?+(v/60).toFixed(1)+'h':Math.round(v)+'m';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function load(){try{S=JSON.parse(localStorage.getItem(K))||[]}catch(e){S=[]}S.forEach(s=>{if(!s.h)s.h={[s.dec]:Math.round(s.xp)}})}
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function say(t,type){const b=$('banner');b.lastChild&&b.lastChild.nodeType===3&&b.removeChild(b.lastChild);b.appendChild(document.createTextNode(t));b.className=t?type:''}
+function decay(){
+  const t=day(),lost=[];
+  S.forEach(s=>{
+    const n=t-Math.max(s.dec,s.last+s.grace);
+    if(n>0&&s.xp>0){const b=s.xp;for(let i=0;i<Math.min(n,400);i++){s.xp=Math.max(0,s.xp-Math.max(1,s.xp*.02));s.h[t-n+i+1]=Math.round(s.xp)}lost.push(s.name+' -'+fmt(b-s.xp))}
+    s.dec=t;
+  });
+  save();
+  if(lost.length)say('Se oxidaron: '+lost.join(', '),'warn');
+}
+function add(){
+  const n=$('n').value.trim();if(!n)return;
+  S.push({id:Date.now(),name:n,emo:$('e').value.trim()||'⭐',grace:+$('g').value,xp:0,last:day(),dec:day(),h:{[day()]:0}});
+  const bt=document.querySelector('.add').getBoundingClientRect();$('n').value='';$('e').value='';save();render();burst(bt.left+bt.width/2,bt.top+bt.height/2,16,TIER[1]);const cs=document.querySelectorAll('.card');cs[cs.length-1].classList.add('flash');
+}
+function del(id){
+  if(pend!==id){pend=id;render();return}
+  S=S.filter(x=>x.id!==id);pend=null;save();render();
+}
+function status(s){
+  const since=day()-s.last,left=s.grace-since;
+  if(since===0)return['good','Practicada hoy',100];
+  if(left>0)return['','Gracia: te quedan '+left+(left===1?' día':' días'),Math.round(left/s.grace*100)];
+  if(left===0)return['warn','Último día de gracia',8];
+  return['warn','Oxidándose desde hace '+(-left)+(left===-1?' día':' días'),0];
+}
+const TIER=[
+{n:'Piedra',h:'#cfd6e0',m:'#94b0c2',d:'#566c86'},
+{n:'Esmeralda',h:'#a7f070',m:'#38b764',d:'#257179'},
+{n:'Zafiro',h:'#73eff7',m:'#41a6f6',d:'#3b5dc9'},
+{n:'Amatista',h:'#d9a8ff',m:'#9b5de5',d:'#5d275d'},
+{n:'Rubí',h:'#ffa08a',m:'#d93a52',d:'#7d1f3a'},
+{n:'Diamante',h:'#ffffff',m:'#b8f4ff',d:'#73eff7'}];
+const tier=L=>Math.min(5,Math.floor((L-1)/2));
+const SHAPE=['..oooooo..','.ohhhmmmmo','ohwhhmmmdo','ohhmmmmmdo','ohmmmmmddo','.ommmmmddo','..ommmddo.','...ommdo..','...oddo...','....oo....'];
+function gem(L,rust){
+  const t=TIER[tier(L)],c={o:'#1a1c2c',h:t.h,m:t.m,d:t.d,w:'#ffffff'};let r='';
+  SHAPE.forEach((row,y)=>[...row].forEach((k,x)=>{if(c[k])r+='<rect x="'+x+'" y="'+y+'" width="1" height="1" fill="'+c[k]+'"/>'}));
+  return '<svg class="gem'+(rust?' rust':'')+'" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true">'+r+'</svg>';
+}
+function burst(x,y,n,t){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const cols=[t.h,t.m,'#ffcd75','#f4f4f4'];
+  for(let i=0;i<n;i++){
+    const p=document.createElement('i'),a=Math.random()*6.283,d=30+Math.random()*50;
+    p.className='pt';
+    p.style.cssText='left:'+(x-3)+'px;top:'+(y-3)+'px;background:'+cols[i%4]+';--dx:'+Math.round(Math.cos(a)*d)+'px;--dy:'+Math.round(Math.sin(a)*d-12)+'px';
+    document.body.appendChild(p);setTimeout(()=>p.remove(),700);
+  }
+}
+function render(){
+  const el=$('list');
+  if(!S.length){el.innerHTML='<div class="empty">Aún no tienes skills.<br>Añade la primera arriba, por ejemplo Dibujo.</div>';return}
+  el.innerHTML=S.map((s,i)=>{
+    const L=lvl(s.xp),lo=need(L),hi=need(L+1),pct=Math.round((s.xp-lo)/(hi-lo)*100);
+    const[c,t,f]=status(s),hue=(i*67+120)%360,fc=c==='warn'?'var(--warn)':'var(--good)';
+    return `<div class="card px" data-id="${s.id}"><div class="lv">${gem(L,f===0&&c==='warn')}Nv ${L}<small>${TIER[tier(L)].n}</small></div>
+<div><div class="name">${esc(s.emo)} ${esc(s.name)}</div>
+<div class="bar"><i style="width:calc((100% - 8px) * ${pct} / 100);background:hsl(${hue} 70% 55%)"></i></div>
+<div class="meta">${fmt(s.xp-lo)} / ${fmt(hi-lo)}</div>
+<div class="bar s"><i style="width:calc((100% - 6px) * ${f} / 100);background:${fc}"></i></div>
+<div class="st ${c}">${t}</div></div>
+<div class="acts"><button onclick="go(${s.id})">Practicar en el dojo</button>
+<button class="x" onclick="del(${s.id})" aria-label="Borrar skill">${pend===s.id?'¿Borrar?':'X'}</button></div></div>`}).join('');
+}
+const HUE=i=>(i*67+120)%360,col=i=>'hsl('+HUE(i)+' 70% 55%)';
+function show(v){view=v;['skills','dojo','chart'].forEach(k=>{$('v-'+k).hidden=v!==k});[['t1','skills'],['t3','dojo'],['t2','chart']].forEach(a=>{$(a[0]).className=v===a[1]?'on':''});if(v==='chart')drawChart();if(v==='dojo')drawDojo()}
+function val(s,d){let k=-1e9;for(const x in s.h){const n=+x;if(n<=d&&n>k)k=n}return k<-1e8?null:s.h[k]}
+function dl(d){const t=new Date(d*864e5);return t.getUTCDate()+'/'+(t.getUTCMonth()+1)}
+function tog(id){off[id]=!off[id];drawChart()}
+function setR(n){rng=n;drawChart()}
+function drawChart(){
+  const el=$('v-chart');
+  if(!S.length){el.innerHTML='<div class="empty">Añade una skill para ver cómo crece.</div>';return}
+  const t=day(),d0=t-rng+1,W=320,H=190,L=38,R=8,T=10,B=24,pw=W-L-R,ph=H-T-B;
+  const ser=S.map((s,i)=>{const pts=[];for(let d=d0;d<=t;d++){const v=val(s,d);if(v!==null)pts.push([d,v])}return{s,i,pts}});
+  const vis=ser.filter(z=>!off[z.s.id]&&z.pts.length);
+  let mx=60;vis.forEach(z=>z.pts.forEach(p=>{if(p[1]>mx)mx=p[1]}));
+  const mag=Math.pow(10,Math.floor(Math.log10(mx))),top=Math.ceil(mx/(mag/2))*(mag/2);
+  const X=d=>L+(d-d0)/(rng-1)*pw,Y=v=>T+ph-v/top*ph;
+  let g='';
+  for(let k=0;k<=4;k++){const y=Y(top*k/4);g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y+'" y2="'+y+'" stroke="currentColor" opacity=".22" stroke-dasharray="3 3"/><text x="'+(L-5)+'" y="'+(y+3)+'" text-anchor="end">'+lab(top*k/4)+'</text>'}
+  [[d0,'start'],[Math.round((d0+t)/2),'middle'],[t,'end']].forEach(a=>{g+='<text x="'+X(a[0])+'" y="'+(H-6)+'" text-anchor="'+a[1]+'">'+dl(a[0])+'</text>'});
+  vis.forEach(z=>{
+    const c=col(z.i);let d='',m='';
+    z.pts.forEach((p,j)=>{
+      const x=X(p[0]),y=Y(p[1]);
+      d+=j?'H'+x+'V'+y:'M'+x+' '+y;
+      if(!j||p[1]!==z.pts[j-1][1]||j===z.pts.length-1)m+='<rect x="'+(x-3)+'" y="'+(y-3)+'" width="6" height="6" fill="'+c+'" stroke="#1a1c2c" stroke-width="1.5"/>';
+    });
+    g+='<path d="'+d+'" fill="none" stroke="'+c+'" stroke-width="3" shape-rendering="crispEdges"/>'+m;
+  });
+  const short=Math.max(...S.map(s=>Object.keys(s.h).length))<2;
+  let h='<div class="chips">'+[7,30,90].map(n=>'<button class="'+(rng===n?'on':'')+'" onclick="setR('+n+')">'+n+' días</button>').join('')+'</div>';
+  h+='<div class="chart px"><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="XP de cada skill por día">'+g+'</svg></div>';
+  h+='<div class="chips">'+S.map((s,i)=>'<button class="'+(off[s.id]?'off':'')+'" onclick="tog('+s.id+')"><i class="sw" style="background:'+col(i)+'"></i>'+esc(s.emo)+' '+esc(s.name)+'</button>').join('')+'</div>';
+  if(short)h+='<div class="note">El historial empieza hoy. La gráfica irá creciendo con cada día que practiques.</div>';
+  h+='<div class="note">Cambio en los últimos '+rng+' días</div>';
+  ser.forEach(z=>{
+    const a=z.pts.length?z.pts[0][1]:0,b=z.pts.length?z.pts[z.pts.length-1][1]:0,dd=b-a;
+    h+='<div class="row px"><span><i class="sw" style="background:'+col(z.i)+'"></i>'+esc(z.s.emo)+' '+esc(z.s.name)+'</span><span class="'+(dd>0?'good':dd<0?'warn':'mu')+'">'+(dd>0?'+':dd<0?'-':'')+fmt(Math.abs(dd))+'</span></div>';
+  });
+  el.innerHTML=h;
+}
+const GROUPS=[['Cortas: para empezar sin presión',[5,10]],['Intermedias: para coger ritmo',[15,25]],['Largas: para profundizar',[45,60]]];
+let sel=null,act=null,res=null,giv=false,ac=null,wl=null;
+const TK='skilltree.timer',ms=r=>{r=Math.ceil(r/1000);return String(Math.floor(r/60)).padStart(2,'0')+':'+String(r%60).padStart(2,'0')};
+function getT(){try{return JSON.parse(localStorage.getItem(TK))}catch(e){return null}}
+function setT(a){try{a?localStorage.setItem(TK,JSON.stringify(a)):localStorage.removeItem(TK)}catch(e){}}
+let wlFail=false;
+const wlMsg=()=>'Sesión de '+act.min+' min. No pude mantener la pantalla encendida: desactiva el apagado automático mientras practicas.';
+async function lock(){
+  if(wl)return;
+  try{
+    if(!('wakeLock' in navigator))throw 0;
+    wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>{wl=null});wlFail=false;
+  }catch(e){wlFail=true;const n=$('wn');if(n&&act)n.textContent=wlMsg()}
+}
+function unlock(){try{wl&&wl.release()}catch(e){}wl=null}
+function chime(){
+  try{if(!ac)ac=new(window.AudioContext||window.webkitAudioContext)();const t0=ac.currentTime;
+    [523,659,784,1047].forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain(),a=t0+i*.14;o.type='square';o.frequency.value=f;g.gain.setValueAtTime(.12,a);g.gain.exponentialRampToValueAtTime(.001,a+.13);o.connect(g);g.connect(ac.destination);o.start(a);o.stop(a+.14)})}catch(e){}
+  try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}
+}
+const used=s=>s.td&&s.td.d===day()?s.td.m:0;
+function award(id,m){
+  const s=S.find(x=>x.id===id);if(!s)return null;
+  const a=lvl(s.xp),gain=Math.min(m,Math.max(0,CAP-used(s)));
+  s.xp+=gain;s.td={d:day(),m:used(s)+gain};s.last=day();s.dec=day();s.h[day()]=Math.round(s.xp);save();
+  const b=lvl(s.xp);
+  return{s,gain,m,a,b,up:b>a,evo:tier(b)>tier(a),t:TIER[tier(b)]};
+}
+function pick(id){sel=id;drawDojo()}
+function go(id){sel=id;show('dojo')}
+function startS(min){
+  const s=S.find(x=>x.id===sel);if(!s)return;
+  if(CAP-used(s)<=0){res={full:s};drawDojo();return}
+  const n=Date.now();act={id:s.id,min,start:n,end:n+min*6e4};setT(act);res=null;giv=false;
+  try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();ac.resume()}catch(e){}
+  try{if('Notification' in window&&Notification.permission==='default')Notification.requestPermission()}catch(e){}
+  lock();drawDojo();
+}
+function giveUp(){
+  if(!giv){giv=true;drawDojo();return}
+  act=null;setT(null);unlock();giv=false;res=null;document.title='Mis skills';drawDojo();
+}
+function finish(){
+  const a=act;if(!a)return;
+  act=null;setT(null);unlock();giv=false;document.title='Mis skills';
+  const r=award(a.id,a.min);res=r||{gone:true};
+  chime();
+  try{if(r&&document.hidden&&'Notification' in window&&Notification.permission==='granted'){const nb=r.s.name+': +'+fmt(r.gain);if(navigator.serviceWorker&&navigator.serviceWorker.ready)navigator.serviceWorker.ready.then(g=>g.showNotification('Sesión completada',{body:nb,icon:'icon-192.png',vibrate:[200,100,200]}));else new Notification('Sesión completada',{body:nb})}}catch(e){}
+  render();show('dojo');
+  if(r&&r.gain>0){
+    const g=document.querySelector('#v-dojo .gem');
+    if(g){g.classList.add('pop');setTimeout(()=>g.classList.remove('pop'),650);const q=g.getBoundingClientRect();burst(q.left+q.width/2,q.top+q.height/2,r.evo?32:r.up?22:12,r.t)}
+  }
+}
+function tick(){
+  if(!act)return;
+  const rem=act.end-Date.now();
+  if(rem<=0){finish();return}
+  document.title=ms(rem)+' · Mis skills';
+  const c=$('clk');
+  if(c){c.textContent=ms(rem);setRing(Math.max(0,Math.min(1,1-rem/(act.min*6e4))))}
+}
+function resHTML(){
+  if(res.gone)return '<div class="note">La skill de esa sesión ya no existe.</div>';
+  if(res.full)return '<div class="dj px"><div class="name">Tope diario alcanzado</div><div class="note">'+esc(res.full.name)+' ya sumó 3 h de XP hoy. Mañana sigues.</div></div>';
+  const r=res,s=r.s;
+  const ti=r.evo?'¡'+esc(s.name)+' evolucionó a '+r.t.n+'!':r.up?'¡'+esc(s.name)+' subió al nivel '+r.b+'!':'Sesión completada';
+  const su=r.gain>=r.m?'+'+fmt(r.gain)+' de XP en '+esc(s.name):r.gain>0?'Solo '+fmt(r.gain)+' cuentan: tope de 3 h al día':'Tope diario alcanzado: esta sesión no suma XP';
+  return '<div class="dj px">'+gem(r.b,false)+'<div class="name">'+ti+'</div><div class="note">'+su+'</div><div class="chips"><button class="go" onclick="res=null;drawDojo()">Otra sesión</button></div></div>';
+}
+const NG=36,CELLS=(()=>{const a=[];for(let y=0;y<NG;y++)for(let x=0;x<NG;x++){const dx=x+.5-NG/2,dy=y+.5-NG/2,r=Math.sqrt(dx*dx+dy*dy);if(r>=13&&r<=17.5){let an=Math.atan2(dx,-dy);if(an<0)an+=6.2832;a.push({x,y,an,l:Math.min(2,Math.floor((r-13)/1.5))})}}return a.sort((p,q)=>p.an-q.an||p.l-q.l)})();
+const LIT=[68,55,40];
+let ringEls=[],ringN=0,ringHue=0;
+function ringFill(i,done){const e=ringEls[i];if(e)e.style.fill=done?'var(--track)':'hsl('+ringHue+' 70% '+LIT[CELLS[i].l]+'%)'}
+function setRing(f){
+  const n=Math.floor(f*CELLS.length);if(n===ringN)return;
+  for(let i=Math.min(n,ringN);i<Math.max(n,ringN);i++)ringFill(i,i<n);
+  ringN=n;
+}
+function initRing(){
+  ringEls=[...document.querySelectorAll('#v-dojo .ring rect')];
+  const i=S.findIndex(x=>x.id===act.id);ringHue=HUE(i<0?0:i);
+  ringN=Math.max(0,Math.min(CELLS.length,Math.floor((1-(act.end-Date.now())/(act.min*6e4))*CELLS.length)));
+  for(let k=0;k<ringEls.length;k++)ringFill(k,k<ringN);
+}
+function drawDojo(){
+  const el=$('v-dojo');
+  if(!S.length){el.innerHTML='<div class="empty">Añade una skill en la pestaña Skills para entrenar.</div>';return}
+  if(!S.some(x=>x.id===sel))sel=act?act.id:S[0].id;
+  let h='';
+  if(act){
+    const i=S.findIndex(x=>x.id===act.id),s=S[i],rem=act.end-Date.now();
+    h='<div class="dj px">'+(s?gem(lvl(s.xp),false)+'<div class="name">'+esc(s.emo)+' '+esc(s.name)+'</div>':'')
+     +'<div class="ring"><svg viewBox="0 0 36 36" shape-rendering="crispEdges" aria-hidden="true">'+CELLS.map(c=>'<rect x="'+c.x+'" y="'+c.y+'" width="1.02" height="1.02"/>').join('')+'</svg><div class="clk" id="clk">'+ms(rem)+'</div></div>'
+     +'<div class="note" id="wn">'+(wlFail?wlMsg():'Sesión de '+act.min+' min. La pantalla se mantiene encendida mientras dura.')+'</div>'
+     +'<div class="chips"><button onclick="giveUp()">'+(giv?'¿Seguro? No ganas XP':'Abandonar')+'</button></div></div>';
+  }else{
+    if(res)h+=resHTML();
+    const s=S.find(x=>x.id===sel);
+    h+='<div class="note">Elige una skill y una sesión. La XP llega al terminar; si abandonas, no hay XP.</div>';
+    h+='<div class="chips">'+S.map(x=>'<button class="'+(x.id===sel?'on':'')+'" onclick="pick('+x.id+')">'+esc(x.emo)+' '+esc(x.name)+'</button>').join('')+'</div>';
+    h+='<div class="note">Hoy en '+esc(s.name)+': '+fmt(used(s))+' de 3 h</div>';
+    GROUPS.forEach(g=>{h+='<div class="note">'+g[0]+'</div><div class="chips">'+g[1].map(n=>'<button class="go" onclick="startS('+n+')">'+n+' min</button>').join('')+'</div>'});
+  }
+  el.innerHTML=h;
+  if(act)initRing();
+}
+function boot(first){
+  load();
+  const a=getT();act=a&&S.some(x=>x.id===a.id)?a:null;if(a&&!act)setT(null);
+  if(act&&act.end<=Date.now())finish();
+  decay();render();
+  if(act)lock();
+  if(first&&act)show('dojo');else if(view!=='skills')show(view);
+}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)boot(false)});
+boot(true);setInterval(tick,250);
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script></body></html>
